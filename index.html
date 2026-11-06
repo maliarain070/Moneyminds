@@ -203,11 +203,11 @@ tasks:()=>`<h2 style="margin-top:0">Daily tasks</h2><p class="mu sm" style="marg
 
 blogs:()=>`<h2 style="margin-top:0">Read and earn</h2><div class="grid w">${BLOGS.map(bcard).join('')}</div>`,
 
-invite:()=>{const l=location.href.split('#')[0].split('?')[0]+'?ref='+S.user.code;return `
+invite:()=>{return `
 <h2 style="margin-top:0">Invite friends</h2>
-<div class="card"><p class="mu">Earn <b style="color:var(--ok)">${usd(REF_BONUS)}</b> every time a friend joins with your link and completes ${REF_MIN_TASKS} tasks.</p>
-<label style="display:block;margin-top:16px">Your link</label><input id="lnk" readonly value="${l}">
-<div class="row"><button class="btn" onclick="cp()">Copy link</button><span class="mu sm">Code: <b>${S.user.code}</b></span></div></div>
+<div class="card"><p class="mu">Share your referral code. Earn <b style="color:var(--ok)">${usd(REF_BONUS)}</b> every time a friend signs up with your code and completes ${REF_MIN_TASKS} tasks.</p>
+<label style="display:block;margin-top:16px">Your referral code</label><input id="lnk" readonly value="${S.user.code}" style="font-family:Orbitron,sans-serif;font-size:20px;letter-spacing:2px;text-align:center">
+<button class="btn" style="width:100%" onclick="cp()">Copy referral code</button></div>
 <div class="grid" style="margin-top:16px">${stat('Friends joined',S.refs)}${stat('Referral earnings',usd(S.refs*REF_BONUS))}</div>`},
 
 wallet:()=>`<h2 style="margin-top:0">Wallet</h2>
@@ -250,7 +250,7 @@ const AFTER={home(){let v=0;const el=$('#live');const iv=setInterval(()=>{if(!$(
 function reg(ev){ev.preventDefault();const f=ev.target;
  S.user={name:f.n.value.trim(),email:f.e.value.trim(),admin:f.e.value.trim().toLowerCase()===ADMIN_EMAIL,code:'EV'+Math.random().toString(36).slice(2,8).toUpperCase()};
  save();hdr();toast('Account ready');location.hash='#dash';view();return false}
-function cp(){const i=$('#lnk');i.select();try{navigator.clipboard.writeText(i.value)}catch(e){document.execCommand('copy')}toast('Link copied')}
+function cp(){const i=$('#lnk');i.select();try{navigator.clipboard.writeText(i.value)}catch(e){document.execCommand('copy')}toast('Referral code copied')}
 function wd(ev){ev.preventDefault();const f=ev.target,a=r2(parseFloat(f.amt.value)),m=f.m.value,n=f.num.value.trim();
  if(!(a>=MIN))return toast('Minimum withdrawal is '+usd(MIN)),false;
  if(a>S.bal)return toast('Amount is more than your balance'),false;
