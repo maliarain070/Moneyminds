@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>EarnVerse — Watch, Follow, Read, Earn</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300e5ff'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='%2305060f'/%3E%3Ccircle cx='32' cy='32' r='24' fill='none' stroke='url(%23g)' stroke-width='5'/%3E%3Cpath d='M42 21H25v22h17M25 32h13' fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2305060f'/%3E%3Cpath d='M42 21H25v22h17M25 32h13' fill='none' stroke='%2300e5ff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#05060f">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#05060f;--card:rgba(255,255,255,.05);--bd:rgba(255,255,255,.11);--tx:#e8ecff;--mu:#8a93b8;--c1:#00e5ff;--c2:#8b5cf6;--c3:#ff3da6;--ok:#2cff9a}
@@ -33,7 +36,8 @@ h2{font-family:Orbitron,sans-serif;font-size:21px;margin:34px 0 14px;font-weight
 .orb{position:relative;padding:26px;border-radius:24px;border:1px solid rgba(0,229,255,.35);background:linear-gradient(160deg,rgba(0,229,255,.1),rgba(139,92,246,.12));box-shadow:0 0 60px rgba(139,92,246,.3),inset 0 0 40px rgba(0,229,255,.08);animation:fl 5s ease-in-out infinite}
 .orb .n{font-family:Orbitron,sans-serif;font-size:42px;font-weight:800;color:var(--ok);text-shadow:0 0 22px rgba(44,255,154,.55)}
 .feed{margin-top:16px;display:grid;gap:8px;font-size:13px}
-.feed div{display:flex;justify-content:space-between;padding:9px 12px;border-radius:10px;background:rgba(0,0,0,.3)}
+.feed div{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-radius:10px;background:rgba(0,0,0,.3)}
+.feed span{display:flex;align-items:center;gap:8px}
 @keyframes fl{50%{transform:translateY(-10px)}}
 @media(prefers-reduced-motion:reduce){.orb{animation:none}}
 input,select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--bd);background:rgba(0,0,0,.4);color:var(--tx);font:15px 'Space Grotesk',sans-serif;margin:6px 0 14px;outline:0}
@@ -41,7 +45,9 @@ input:focus,select:focus{border-color:var(--c1)}
 select option{background:#0b0e1f}
 label{font-size:13px;color:var(--mu)}
 .row{display:flex;align-items:center;gap:14px}
-.pb{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-weight:800;font-size:13px;color:#fff;flex:none;box-shadow:0 0 18px currentColor}
+.pb{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;flex:none;background:rgba(255,255,255,.08);border:1px solid var(--bd)}
+.pb svg{width:28px;height:28px;display:block}
+.fi{width:18px;height:18px;display:block;flex:none}
 .bar{height:8px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c1),var(--c3));transition:width .3s}
 .big{font-family:Orbitron,sans-serif;font-size:28px;font-weight:800;margin-top:6px}
@@ -53,7 +59,8 @@ table{width:100%;border-collapse:collapse;font-size:14px}
 td,th{padding:10px 8px;text-align:left;border-bottom:1px solid var(--bd)}th{color:var(--mu);font-weight:500}
 .tag{padding:3px 10px;border-radius:99px;font-size:12px;background:rgba(255,200,0,.14);color:#ffd24a}
 .fil{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.fil button{cursor:pointer;padding:8px 16px;border-radius:99px;border:1px solid var(--bd);background:var(--card);color:var(--mu);font:500 13px 'Space Grotesk',sans-serif}
+.fil button{cursor:pointer;padding:8px 16px;border-radius:99px;border:1px solid var(--bd);background:var(--card);color:var(--mu);font:500 13px 'Space Grotesk',sans-serif;display:flex;align-items:center;gap:7px}
+.fil button svg{width:16px;height:16px}
 .fil button.on{color:#04060f;background:linear-gradient(90deg,var(--c1),var(--c2));border-color:transparent}
 details{padding:16px 18px;border:1px solid var(--bd);border-radius:14px;background:var(--card);margin-bottom:10px}
 summary{cursor:pointer;font-weight:700}details p{margin-top:10px;color:var(--mu);line-height:1.7;font-size:14px}
@@ -66,6 +73,7 @@ a.l{padding:8px 7px;font-size:12px}nav{padding:10px 14px}#au{margin-left:auto}.c
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="ig" cx=".3" cy="1.05" r="1.15"><stop offset="0" stop-color="#FFD600"/><stop offset=".25" stop-color="#FF7A00"/><stop offset=".55" stop-color="#FF0069"/><stop offset=".85" stop-color="#D300C5"/><stop offset="1" stop-color="#7638FA"/></radialGradient></defs></svg>
 <nav>
   <a class="logo" href="#home">EARNVERSE</a>
   <div class="links">
@@ -79,20 +87,29 @@ a.l{padding:8px 7px;font-size:12px}nav{padding:10px 14px}#au{margin-left:auto}.c
 <div id="toast"></div>
 
 <script>
-/* ===== SETTINGS: apni values yahan badlein ===== */
+/* ===== SETTINGS ===== */
 const RATE=280;        // 1 USD = kitne PKR
-const MIN=5;           // minimum withdraw (USD)
+const MIN=50;          // minimum withdraw (USD)
 const REF_BONUS=0.5;   // har friend ka bonus (USD)
 const REF_MIN_TASKS=3; // friend itne tasks kare tab hi bonus milta hai
-const ADMIN_EMAIL='admin@earnverse.com'; // is email se signup karne par admin panel khulta hai (real site mein ye server rules se hona chahiye)
+const ADMIN_EMAIL='admin@earnverse.com'; // real site mein admin check server par hona chahiye
 const PL={
-  youtube:{n:'YouTube',c:'#ff1744',i:'YT'},
-  instagram:{n:'Instagram',c:'#d62976',i:'IG'},
-  tiktok:{n:'TikTok',c:'#00b8d4',i:'TT'},
-  facebook:{n:'Facebook',c:'#1877f2',i:'FB'},
-  blog:{n:'Blog',c:'#8b5cf6',i:'BL'}
+  youtube:{n:'YouTube'},instagram:{n:'Instagram'},tiktok:{n:'TikTok'},facebook:{n:'Facebook'},blog:{n:'Blog'},invite:{n:'Invite'}
 };
-/* Tasks: u = apni video / profile ka link lagayen, s = kitne second rukna hai, r = reward USD */
+/* ===== LOGOS (inline SVG, kisi external file ki zaroorat nahi) ===== */
+const TT='M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z';
+const G={
+ youtube:'<rect x="1" y="4.5" width="22" height="15" rx="4.5" fill="#F00"/><path d="M9.8 8.8v6.4l5.6-3.2z" fill="#fff"/>',
+ instagram:'<rect x="1.5" y="1.5" width="21" height="21" rx="6.2" fill="url(#ig)"/><rect x="5.2" y="5.2" width="13.6" height="13.6" rx="4.2" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.4" cy="7.6" r="1.1" fill="#fff"/>',
+ tiktok:'<g transform="translate(3 2.5) scale(.75)"><path d="'+TT+'" fill="#25F4EE" transform="translate(-1 .8)"/><path d="'+TT+'" fill="#FE2C55" transform="translate(1 -.8)"/><path d="'+TT+'" fill="#fff"/></g>',
+ facebook:'<circle cx="12" cy="12" r="11" fill="#1877F2"/><path d="M13.4 22.8v-8.6h2.8l.5-3.4h-3.3V8.6c0-1 .4-1.7 1.8-1.7h1.6V4c-.3 0-1.3-.2-2.5-.2-2.5 0-4.1 1.500-4.100 4.200v2.800H7.400v3.400h2.800v8.600z" fill="#fff"/>',
+ blog:'<rect x="3.5" y="2.5" width="17" height="19" rx="3.5" fill="#8b5cf6"/><path d="M7.5 8h9M7.5 12h9M7.5 16h5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/>',
+ invite:'<circle cx="12" cy="12" r="11" fill="#00c853"/><path d="M12 6.5v11M6.5 12h11" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>'
+};
+const ic=(k,c)=>`<svg class="${c||''}" viewBox="0 0 24 24" aria-hidden="true">${G[k]}</svg>`;
+const tile=k=>`<div class="pb" title="${PL[k].n}">${ic(k)}</div>`;
+
+/* Tasks: u = apni video/profile ka link, s = seconds, r = reward USD */
 const TASKS=[
  {id:'y1',p:'youtube',t:'Watch: Tech Review 2026',r:.05,s:30,u:'https://www.youtube.com/'},
  {id:'y2',p:'youtube',t:'Watch & subscribe to our channel',r:.08,s:45,u:'https://www.youtube.com/'},
@@ -114,28 +131,31 @@ const K='earnverse_v1',$=s=>document.querySelector(s);
 let S;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
 S=S||{user:null,bal:0,total:0,done:{},refs:0,hist:[],wd:[]};
 S.queue=S.queue||[];S.custom=S.custom||[];S.streak=S.streak||0;
-['y2','i1','t2','f2'].forEach(id=>TASKS.find(t=>t.id===id).rv=1); // follow/subscribe tasks manual review se pay hotay hain
+['y2','i1','t2','f2'].forEach(id=>TASKS.find(t=>t.id===id).rv=1);
 S.custom.forEach(t=>TASKS.push(t));
 const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
-const usd=n=>'$'+n.toFixed(2);
+const r2=n=>Math.round(n*100)/100;
+const usd=n=>'$'+r2(n).toFixed(2);
 const today=()=>new Date().toDateString();
+const yest=()=>new Date(Date.now()-864e5).toDateString();
 const done=id=>S.done[id]===today();
 const lbl=id=>S.queue.some(q=>q.id===id&&q.d===today()&&q.s==='Pending')?'In review':'Done';
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const streak=()=>(S.lastBonus===today()||S.lastBonus===yest())?S.streak:0;
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2400)}
 function hdr(){$('#bal').textContent=usd(S.bal);$('#au').textContent=S.user?'Logout':'Login';$('#adm').style.display=S.user&&S.user.admin?'':'none'}
-function pay(id,a,l){if(done(id))return;S.bal+=a;S.total+=a;S.done[id]=today();S.hist.push({d:today(),a,l});save();hdr();toast('+'+usd(a)+' added to your wallet')}
+function pay(id,a,l){if(done(id))return;S.bal=r2(S.bal+a);S.total=r2(S.total+a);S.done[id]=today();S.hist.push({d:today(),a,l});save();hdr();toast('+'+usd(a)+' added to your wallet')}
 
 /* ===== COMPONENTS ===== */
-const tcard=t=>`<div class="card row"><div class="pb" style="background:${PL[t.p].c};color:${PL[t.p].c}"><span style="color:#fff">${PL[t.p].i}</span></div>
+const tcard=t=>`<div class="card row">${tile(t.p)}
 <div style="flex:1"><b>${t.t}</b><div class="mu sm">${PL[t.p].n}, ${t.s} sec, <span style="color:var(--ok)">${usd(t.r)}</span></div></div>
 <button class="btn" data-t="${t.id}" ${done(t.id)?'disabled':''}>${done(t.id)?lbl(t.id):'Start'}</button></div>`;
-const bcard=b=>`<div class="card row"><div class="pb" style="background:${PL.blog.c};color:${PL.blog.c}"><span style="color:#fff">BL</span></div>
+const bcard=b=>`<div class="card row">${tile('blog')}
 <div style="flex:1"><b>${b.t}</b><div class="mu sm">${b.s} sec read, <span style="color:var(--ok)">${usd(b.r)}</span></div></div>
 <button class="btn" data-b="${b.id}" ${done(b.id)?'disabled':''}>${done(b.id)?'Done':'Read'}</button></div>`;
 const stat=(l,v)=>`<div class="card"><div class="mu sm">${l}</div><div class="big">${v}</div></div>`;
 
-/* ===== PAGES (sab pages ek hi file mein) ===== */
+/* ===== PAGES ===== */
 const P={
 home:()=>`
 <section class="hero"><div>
@@ -143,11 +163,11 @@ home:()=>`
 <p class="mu" style="max-width:520px;margin:18px 0 26px;line-height:1.7">Complete short tasks on YouTube, Instagram, TikTok and Facebook, read blogs, invite friends, and withdraw to Easypaisa, JazzCash or your bank account.</p>
 <a class="btn" href="#${S.user?'tasks':'auth'}">Start earning</a> <a class="btn g" href="#wallet">See payout methods</a></div>
 <div class="orb"><div class="mu sm">Your wallet</div><div class="n" id="live">$0.00</div>
-<div class="feed"><div><span>YouTube video watched</span><b style="color:var(--ok)">+$0.05</b></div><div><span>Instagram follow</span><b style="color:var(--ok)">+$0.04</b></div><div><span>Friend joined</span><b style="color:var(--ok)">+${usd(REF_BONUS)}</b></div></div></div></section>
+<div class="feed"><div><span>${ic('youtube','fi')}YouTube video watched</span><b style="color:var(--ok)">+$0.05</b></div><div><span>${ic('instagram','fi')}Instagram follow</span><b style="color:var(--ok)">+$0.04</b></div><div><span>${ic('invite','fi')}Friend joined</span><b style="color:var(--ok)">+${usd(REF_BONUS)}</b></div></div></div></section>
 <h2>Four ways to earn</h2>
-<div class="grid">${Object.keys(PL).filter(k=>k!=='blog').map(k=>`<div class="card row"><div class="pb" style="background:${PL[k].c};color:${PL[k].c}"><span style="color:#fff">${PL[k].i}</span></div><div><b>${PL[k].n}</b><div class="mu sm">Daily tasks</div></div></div>`).join('')}
-<div class="card row"><div class="pb" style="background:${PL.blog.c};color:${PL.blog.c}"><span style="color:#fff">BL</span></div><div><b>Blogs</b><div class="mu sm">Read and claim</div></div></div>
-<div class="card row"><div class="pb" style="background:#00c853;color:#00c853"><span style="color:#fff">+1</span></div><div><b>Invite friends</b><div class="mu sm">${usd(REF_BONUS)} per friend</div></div></div></div>
+<div class="grid">${['youtube','instagram','tiktok','facebook'].map(k=>`<div class="card row">${tile(k)}<div><b>${PL[k].n}</b><div class="mu sm">Daily tasks</div></div></div>`).join('')}
+<div class="card row">${tile('blog')}<div><b>Blogs</b><div class="mu sm">Read and claim</div></div></div>
+<div class="card row">${tile('invite')}<div><b>Invite friends</b><div class="mu sm">${usd(REF_BONUS)} per friend</div></div></div></div>
 <h2>How it works</h2>
 <div class="grid"><div class="card"><b>1. Create your account</b><p class="mu sm" style="margin-top:6px">Sign up free in 20 seconds.</p></div>
 <div class="card"><b>2. Finish tasks</b><p class="mu sm" style="margin-top:6px">Open the link, wait for the timer, claim your reward.</p></div>
@@ -167,17 +187,18 @@ auth:()=>{const r=new URLSearchParams(location.search).get('ref')||'';return `
 <button class="btn" style="width:100%">Continue</button></form></div>`},
 
 dash:()=>{const d7=[...Array(7)].map((_,i)=>{const dt=new Date(Date.now()-(6-i)*864e5).toDateString();return S.hist.filter(x=>x.d===dt).reduce((a,x)=>a+x.a,0)});
-const mx=Math.max(...d7,.01),td=TASKS.filter(t=>done(t.id)).length+BLOGS.filter(b=>done(b.id)).length,lv=Math.floor(S.total/2)+1,pr=(S.total%2)/2*100;
+const mx=Math.max(...d7,.01),td=TASKS.filter(t=>done(t.id)).length+BLOGS.filter(b=>done(b.id)).length,lv=Math.floor(S.total/2)+1,rem=r2(2-(S.total%2)),pr=(S.total%2)/2*100;
+const st=streak(),got=S.lastBonus===today(),nx=r2(.01*Math.min(got?st+1:st+1,7));
 return `<h2 style="margin-top:0">Welcome, ${esc(S.user.name)}</h2>
 <div class="grid">${stat('Balance',usd(S.bal))}${stat('Total earned',usd(S.total))}${stat('Tasks done today',td)}${stat('Friends invited',S.refs)}</div>
-<div class="card" style="margin-top:16px"><div class="row" style="justify-content:space-between"><b>Level ${lv}</b><span class="mu sm">Earn ${usd(2-(S.total%2))} more for the next level</span></div><div class="bar" style="margin-top:12px"><i style="width:${pr}%"></i></div></div>
+<div class="card" style="margin-top:16px"><div class="row" style="justify-content:space-between"><b>Level ${lv}</b><span class="mu sm">Earn ${usd(rem)} more for the next level</span></div><div class="bar" style="margin-top:12px"><i style="width:${pr}%"></i></div></div>
 <div class="card" style="margin-top:16px"><b>Earnings, last 7 days</b><div style="display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:16px">
 ${d7.map(v=>`<div title="${usd(v)}" style="flex:1;height:${Math.max(v/mx*100,4)}%;background:linear-gradient(var(--c1),var(--c2));border-radius:8px 8px 0 0;box-shadow:0 0 14px rgba(0,229,255,.3)"></div>`).join('')}</div></div>
-<div class="card row" style="margin-top:16px;justify-content:space-between"><div><b>Daily bonus</b><div class="mu sm">Streak: ${S.streak} day${S.streak===1?'':'s'}. Claim every day to grow your bonus.</div></div><button class="btn" onclick="bonus()" ${S.lastBonus===today()?'disabled':''}>${S.lastBonus===today()?'Claimed':'Claim bonus'}</button></div>
+<div class="card row" style="margin-top:16px;justify-content:space-between;flex-wrap:wrap"><div><b>Daily bonus</b><div class="mu sm">Streak: ${st} day${st===1?'':'s'}. ${got?'Come back tomorrow for '+usd(nx)+'.':'Claim now and earn '+usd(nx)+'.'}</div></div><button class="btn" id="bonusBtn" ${got?'disabled':''}>${got?'Claimed today':'Claim bonus'}</button></div>
 <div style="margin-top:20px"><a class="btn" href="#tasks">Go to tasks</a></div>`},
 
 tasks:()=>`<h2 style="margin-top:0">Daily tasks</h2><p class="mu sm" style="margin-bottom:14px">Tap Start, finish the action in the new tab, wait for the timer, then claim. Follow and subscribe tasks are paid after a quick review.</p>
-<div class="fil">${['all','youtube','instagram','tiktok','facebook'].map(k=>`<button class="${FIL===k?'on':''}" onclick="FIL='${k}';view()">${k==='all'?'All':PL[k].n}</button>`).join('')}</div>
+<div class="fil">${['all','youtube','instagram','tiktok','facebook'].map(k=>`<button class="${FIL===k?'on':''}" data-f="${k}">${k==='all'?'All':ic(k)+PL[k].n}</button>`).join('')}</div>
 <div class="grid w">${TASKS.filter(t=>FIL==='all'||t.p===FIL).map(tcard).join('')}</div>`,
 
 blogs:()=>`<h2 style="margin-top:0">Read and earn</h2><div class="grid w">${BLOGS.map(bcard).join('')}</div>`,
@@ -216,7 +237,7 @@ return `<h2 style="margin-top:0">Admin panel</h2>
 <div class="card" style="margin-top:16px;overflow-x:auto"><b>Withdrawal requests</b><table><tr><th>Date</th><th>Pay to</th><th>Amount</th><th>Status</th><th></th></tr>${wr||'<tr><td colspan="5" class="mu">No requests yet</td></tr>'}</table></div>
 <div class="card" style="margin-top:16px;overflow-x:auto"><b>Task review queue</b><table><tr><th>Date</th><th>Task</th><th>Reward</th><th>Status</th><th></th></tr>${qr||'<tr><td colspan="5" class="mu">Nothing to review</td></tr>'}</table></div>
 <div class="card" style="margin-top:16px"><b>Add a task</b>
-<form onsubmit="return addT(event)" style="margin-top:12px"><label>Platform</label><select name="p">${Object.keys(PL).filter(k=>k!=='blog').map(k=>`<option value="${k}">${PL[k].n}</option>`).join('')}</select>
+<form onsubmit="return addT(event)" style="margin-top:12px"><label>Platform</label><select name="p">${['youtube','instagram','tiktok','facebook'].map(k=>`<option value="${k}">${PL[k].n}</option>`).join('')}</select>
 <label>Title</label><input name="tt" required maxlength="60"><label>Link (https://...)</label><input name="u" type="url" required>
 <label>Reward (USD)</label><input name="r" type="number" step="0.01" min="0.01" required><label>Timer (seconds)</label><input name="s" type="number" min="10" value="20" required>
 <label>Verification</label><select name="rv"><option value="0">Timer only</option><option value="1">Manual review</option></select>
@@ -230,12 +251,12 @@ function reg(ev){ev.preventDefault();const f=ev.target;
  S.user={name:f.n.value.trim(),email:f.e.value.trim(),admin:f.e.value.trim().toLowerCase()===ADMIN_EMAIL,code:'EV'+Math.random().toString(36).slice(2,8).toUpperCase()};
  save();hdr();toast('Account ready');location.hash='#dash';view();return false}
 function cp(){const i=$('#lnk');i.select();try{navigator.clipboard.writeText(i.value)}catch(e){document.execCommand('copy')}toast('Link copied')}
-function wd(ev){ev.preventDefault();const f=ev.target,a=parseFloat(f.amt.value),m=f.m.value,n=f.num.value.trim();
+function wd(ev){ev.preventDefault();const f=ev.target,a=r2(parseFloat(f.amt.value)),m=f.m.value,n=f.num.value.trim();
  if(!(a>=MIN))return toast('Minimum withdrawal is '+usd(MIN)),false;
  if(a>S.bal)return toast('Amount is more than your balance'),false;
  if(m!=='Bank Account'&&!/^03\d{9}$/.test(n))return toast('Enter a valid number like 03XXXXXXXXX'),false;
  if(m==='Bank Account'&&n.length<10)return toast('Enter a valid account number or IBAN'),false;
- S.bal-=a;S.wd.unshift({d:new Date().toLocaleDateString(),m,n,t:f.ttl.value.trim(),a,s:'Pending'});save();hdr();toast('Withdrawal request sent');view();return false}
+ S.bal=r2(S.bal-a);S.wd.unshift({d:new Date().toLocaleDateString(),m,n,t:f.ttl.value.trim(),a,s:'Pending'});save();hdr();toast('Withdrawal request sent');view();return false}
 const run={},VIS={};let LASTC=0,FIL='all';
 function startTask(id){const t=TASKS.find(x=>x.id===id);if(done(id))return;
  if(run[id]&&Date.now()>=run[id]){
@@ -244,7 +265,7 @@ function startTask(id){const t=TASKS.find(x=>x.id===id);if(done(id))return;
   LASTC=Date.now();delete run[id];
   if(t.rv){S.done[id]=today();S.queue.push({id,t:t.t,r:t.r,d:today(),s:'Pending'});save();toast('Sent for review. Reward is added once approved')}
   else pay(id,t.r,PL[t.p].n+' task');
-  return view()}
+  return view(1)}
  if(run[id])return;window.open(t.u,'_blank','noopener');delete VIS[id];run[id]=Date.now()+t.s*1000;tick()}
 function tick(){document.querySelectorAll('[data-t]').forEach(b=>{const id=b.dataset.t,t=TASKS.find(x=>x.id===id);
  if(done(id)){b.textContent=lbl(id);b.disabled=true}else if(run[id]){const l=Math.ceil((run[id]-Date.now())/1000);b.textContent=l>0?l+'s':'Claim '+usd(t.r)}})}
@@ -255,28 +276,32 @@ function readBlog(id){const b=BLOGS.find(x=>x.id===id);if(done(id))return;const 
  <div class="row"><button class="btn" id="bc" disabled>Reading</button><button class="btn g" id="bx">Close</button></div></div>`;
  document.body.append(m);const end=Date.now()+b.s*1000;
  const iv=setInterval(()=>{const l=end-Date.now();$('#bp').style.width=Math.min(100,(1-l/(b.s*1000))*100)+'%';
-  if(l<=0){clearInterval(iv);const c=$('#bc');c.disabled=false;c.textContent='Claim '+usd(b.r);c.onclick=()=>{pay(id,b.r,'Blog read');m.remove();view()}}},200);
+  if(l<=0){clearInterval(iv);const c=$('#bc');c.disabled=false;c.textContent='Claim '+usd(b.r);c.onclick=()=>{pay(id,b.r,'Blog read');m.remove();view(1)}}},200);
  $('#bx').onclick=()=>{clearInterval(iv);m.remove()}}
-document.addEventListener('click',ev=>{const a=ev.target.closest('[data-t]'),b=ev.target.closest('[data-b]');if(a)startTask(a.dataset.t);if(b)readBlog(b.dataset.b)});
+document.addEventListener('click',ev=>{const a=ev.target.closest('[data-t]'),b=ev.target.closest('[data-b]'),f=ev.target.closest('[data-f]'),bn=ev.target.closest('#bonusBtn');
+ if(a)startTask(a.dataset.t);if(b)readBlog(b.dataset.b);if(f){FIL=f.dataset.f;view(1)}if(bn)bonus()});
 $('#au').onclick=ev=>{if(S.user){ev.preventDefault();S.user=null;save();hdr();location.hash='#home';view()}};
 
-function bonus(){if(S.lastBonus===today())return;S.streak=S.lastBonus===new Date(Date.now()-864e5).toDateString()?S.streak+1:1;S.lastBonus=today();
- const a=.01*Math.min(S.streak,7);S.bal+=a;S.total+=a;S.hist.push({d:today(),a,l:'Daily bonus'});save();hdr();toast('+'+usd(a)+' daily bonus');view()}
-function adm(k,i,ok){if(k==='w'){const w=S.wd[i];w.s=ok?'Paid':'Rejected';if(!ok)S.bal+=w.a}
- else{const q=S.queue[i];q.s=ok?'Approved':'Rejected';if(ok){S.bal+=q.r;S.total+=q.r;S.hist.push({d:q.d,a:q.r,l:'Reviewed task'})}else S.done[q.id]=''}
- save();hdr();view()}
+/* Daily bonus: ek din mein sirf ek baar, streak sahi gin-ti, page jump nahi karta */
+function bonus(){if(!S.user||S.lastBonus===today())return;
+ S.streak=S.lastBonus===yest()?S.streak+1:1;S.lastBonus=today();
+ const a=r2(.01*Math.min(S.streak,7));S.bal=r2(S.bal+a);S.total=r2(S.total+a);S.hist.push({d:today(),a,l:'Daily bonus'});
+ save();hdr();toast('+'+usd(a)+' daily bonus. Streak: '+S.streak);view(1)}
+function adm(k,i,ok){if(k==='w'){const w=S.wd[i];if(w.s!=='Pending')return;w.s=ok?'Paid':'Rejected';if(!ok)S.bal=r2(S.bal+w.a)}
+ else{const q=S.queue[i];if(q.s!=='Pending')return;q.s=ok?'Approved':'Rejected';if(ok){S.bal=r2(S.bal+q.r);S.total=r2(S.total+q.r);S.hist.push({d:q.d,a:q.r,l:'Reviewed task'})}else S.done[q.id]=''}
+ save();hdr();view(1)}
 function addT(ev){ev.preventDefault();const f=ev.target,u=f.u.value.trim();if(!/^https:\/\//.test(u))return toast('Link must start with https://'),false;
  const t={id:'c'+Date.now(),p:f.p.value,t:esc(f.tt.value.trim()),r:parseFloat(f.r.value),s:parseInt(f.s.value,10),u,rv:+f.rv.value};
- S.custom.push(t);TASKS.push(t);save();toast('Task published');view();return false}
-function delT(id){S.custom=S.custom.filter(t=>t.id!==id);const i=TASKS.findIndex(t=>t.id===id);if(i>-1)TASKS.splice(i,1);save();view()}
+ S.custom.push(t);TASKS.push(t);save();toast('Task published');view(1);return false}
+function delT(id){S.custom=S.custom.filter(t=>t.id!==id);const i=TASKS.findIndex(t=>t.id===id);if(i>-1)TASKS.splice(i,1);save();view(1)}
 
 /* ===== ROUTER ===== */
-function view(){let h=(location.hash||'#home').slice(1);if(!P[h])h='home';
+function view(keep){let h=(location.hash||'#home').slice(1);if(!P[h])h='home';
  if(!S.user&&['dash','tasks','blogs','invite','wallet','admin'].includes(h))h='auth';
  if(h==='admin'&&!(S.user&&S.user.admin))h='home';
  document.querySelectorAll('a.l').forEach(a=>a.classList.toggle('on',a.hash==='#'+h));
- $('#app').innerHTML=P[h]();window.scrollTo(0,0);if(AFTER[h])AFTER[h]();tick()}
-addEventListener('hashchange',view);hdr();view();
+ const y=window.scrollY;$('#app').innerHTML=P[h]();window.scrollTo(0,keep?y:0);if(AFTER[h])AFTER[h]();tick()}
+addEventListener('hashchange',()=>view());hdr();view();
 </script>
 </body>
 </html>
