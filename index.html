@@ -1,282 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>EarnVerse — Watch, Follow, Read, Earn</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EarnVerse - Earn More, Grow More</title>
 <style>
-:root{--bg:#05060f;--card:rgba(255,255,255,.05);--bd:rgba(255,255,255,.11);--tx:#e8ecff;--mu:#8a93b8;--c1:#00e5ff;--c2:#8b5cf6;--c3:#ff3da6;--ok:#2cff9a}
+:root {
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#172033;
+  --muted:#778197;
+  --primary:#6658e8;
+  --primary2:#887cf5;
+  --border:#e9ecf3;
+  --green:#12a878;
+  --shadow:0 8px 30px rgba(35,40,80,.06);
+}
+body.dark {
+  --bg:#111522;
+  --card:#1b2233;
+  --text:#f1f3fa;
+  --muted:#a1abc0;
+  --border:#30394d;
+  --shadow:0 8px 30px rgba(0,0,0,.15);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(600px 400px at 12% 8%,rgba(139,92,246,.35),transparent),radial-gradient(500px 400px at 88% 18%,rgba(0,229,255,.22),transparent),radial-gradient(500px 400px at 50% 100%,rgba(255,61,166,.18),transparent)}
-body::after{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 72%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 72%)}
-.wrap{max-width:1100px;margin:auto;padding:92px 18px 110px}
-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:12px;padding:12px 22px;background:rgba(5,6,15,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
-.logo{font-family:Orbitron,sans-serif;font-weight:800;letter-spacing:1px;font-size:19px;text-decoration:none;color:#fff;text-shadow:0 0 18px var(--c1)}
-.links{display:flex;gap:4px;margin-left:auto}
-a.l{color:var(--mu);text-decoration:none;padding:8px 13px;border-radius:10px;font-size:14px;transition:.2s}
-a.l:hover,a.l.on{color:#fff;background:rgba(255,255,255,.09)}
-.chip{padding:7px 14px;border-radius:99px;border:1px solid var(--bd);background:var(--card);font-weight:700;color:var(--ok);font-size:14px;display:inline-block}
-.btn{border:0;cursor:pointer;padding:12px 22px;border-radius:12px;font:700 14px 'Space Grotesk',sans-serif;color:#04060f;background:linear-gradient(90deg,var(--c1),var(--c2));box-shadow:0 0 24px rgba(0,229,255,.35);transition:.2s;text-decoration:none;display:inline-block}
-.btn:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(139,92,246,.6)}
-.btn.g{background:var(--card);color:var(--tx);border:1px solid var(--bd);box-shadow:none}
-.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-.grid.w{grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}
-h1{font-family:Orbitron,sans-serif;font-size:clamp(30px,6vw,58px);line-height:1.12;font-weight:800}
-h2{font-family:Orbitron,sans-serif;font-size:21px;margin:34px 0 14px;font-weight:600}
-.mu{color:var(--mu)}.sm{font-size:13px}
-.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:center;padding:34px 0 10px}
-.orb{position:relative;padding:26px;border-radius:24px;border:1px solid rgba(0,229,255,.35);background:linear-gradient(160deg,rgba(0,229,255,.1),rgba(139,92,246,.12));box-shadow:0 0 60px rgba(139,92,246,.3),inset 0 0 40px rgba(0,229,255,.08);animation:fl 5s ease-in-out infinite}
-.orb .n{font-family:Orbitron,sans-serif;font-size:42px;font-weight:800;color:var(--ok);text-shadow:0 0 22px rgba(44,255,154,.55)}
-.feed{margin-top:16px;display:grid;gap:8px;font-size:13px}
-.feed div{display:flex;justify-content:space-between;padding:9px 12px;border-radius:10px;background:rgba(0,0,0,.3)}
-@keyframes fl{50%{transform:translateY(-10px)}}
-@media(prefers-reduced-motion:reduce){.orb{animation:none}}
-input,select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--bd);background:rgba(0,0,0,.4);color:var(--tx);font:15px 'Space Grotesk',sans-serif;margin:6px 0 14px;outline:0}
-input:focus,select:focus{border-color:var(--c1)}
-select option{background:#0b0e1f}
-label{font-size:13px;color:var(--mu)}
-.row{display:flex;align-items:center;gap:14px}
-.pb{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-weight:800;font-size:13px;color:#fff;flex:none;box-shadow:0 0 18px currentColor}
-.bar{height:8px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c1),var(--c3));transition:width .3s}
-.big{font-family:Orbitron,sans-serif;font-size:28px;font-weight:800;margin-top:6px}
-.modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);display:grid;place-items:center;padding:18px;backdrop-filter:blur(6px)}
-.modal .card{max-width:560px;width:100%;max-height:85vh;overflow:auto;background:#0b0e1f}
-#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(30px);opacity:0;pointer-events:none;z-index:200;padding:12px 20px;border-radius:12px;background:#0b0e1f;border:1px solid var(--c1);box-shadow:0 0 28px rgba(0,229,255,.4);transition:.3s;font-size:14px}
-#toast.on{opacity:1;transform:translateX(-50%)}
-table{width:100%;border-collapse:collapse;font-size:14px}
-td,th{padding:10px 8px;text-align:left;border-bottom:1px solid var(--bd)}th{color:var(--mu);font-weight:500}
-.tag{padding:3px 10px;border-radius:99px;font-size:12px;background:rgba(255,200,0,.14);color:#ffd24a}
-.fil{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.fil button{cursor:pointer;padding:8px 16px;border-radius:99px;border:1px solid var(--bd);background:var(--card);color:var(--mu);font:500 13px 'Space Grotesk',sans-serif}
-.fil button.on{color:#04060f;background:linear-gradient(90deg,var(--c1),var(--c2));border-color:transparent}
-details{padding:16px 18px;border:1px solid var(--bd);border-radius:14px;background:var(--card);margin-bottom:10px}
-summary{cursor:pointer;font-weight:700}details p{margin-top:10px;color:var(--mu);line-height:1.7;font-size:14px}
-.sb{padding:7px 12px;font-size:12px;border-radius:9px}
-footer{text-align:center;color:var(--mu);font-size:13px;margin-top:50px;line-height:2}footer a{color:var(--c1);text-decoration:none;margin:0 8px}
-@media(max-width:760px){
-.hero{grid-template-columns:1fr}
-.links{position:fixed;bottom:0;left:0;right:0;margin:0;justify-content:space-around;background:rgba(5,6,15,.94);backdrop-filter:blur(14px);border-top:1px solid var(--bd);padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px))}
-a.l{padding:8px 7px;font-size:12px}nav{padding:10px 14px}#au{margin-left:auto}.chip{padding:6px 10px}}
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);color:var(--text);
+  transition:.2s;
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.app{display:flex;min-height:100vh}
+.sidebar{
+  width:245px;background:var(--card);border-right:1px solid var(--border);
+  padding:25px 17px;position:fixed;inset:0 auto 0 0;z-index:10;
+}
+.logo{font-size:24px;font-weight:850;letter-spacing:-1px;margin:5px 10px 35px}
+.logo span{color:var(--primary)}
+.nav-label{font-size:11px;color:var(--muted);font-weight:700;margin:22px 12px 10px;text-transform:uppercase}
+.nav-btn{
+  display:flex;align-items:center;gap:13px;padding:13px 14px;
+  border:0;background:transparent;color:var(--muted);width:100%;
+  border-radius:11px;text-align:left;margin:3px 0;font-weight:600;
+}
+.nav-btn:hover,.nav-btn.active{background:#eeeaff;color:var(--primary)}
+body.dark .nav-btn:hover,body.dark .nav-btn.active{background:#302b53}
+.nav-btn .ico{width:22px;text-align:center;font-size:17px}
+.main{margin-left:245px;width:calc(100% - 245px);padding:26px 34px 50px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;gap:15px}
+.topbar h2{font-size:23px}
+.top-actions{display:flex;align-items:center;gap:10px}
+.icon-btn{
+  border:1px solid var(--border);background:var(--card);color:var(--text);
+  border-radius:10px;padding:10px 13px;
+}
+.avatar{width:38px;height:38px;border-radius:50%;background:#e9e5ff;color:var(--primary);
+display:grid;place-items:center;font-weight:800}
+.page{display:none}
+.page.active{display:block}
+.welcome{
+  background:linear-gradient(115deg,#5d50dc,#8977f2);
+  color:white;padding:30px;border-radius:20px;margin-bottom:23px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+}
+.welcome h1{font-size:27px;margin-bottom:9px}
+.welcome p{opacity:.85;line-height:1.5}
+.welcome .welcome-icon{font-size:60px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:23px}
+.card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:21px;box-shadow:var(--shadow);
+}
+.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px}
+.stat-icon{font-size:22px}
+.stat-number{font-size:25px;font-weight:800;margin-top:14px}
+.stat-note{font-size:12px;color:var(--muted);margin-top:7px}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:26px 0 15px;gap:12px}
+.section-head h3{font-size:18px}
+.text-btn{border:0;background:transparent;color:var(--primary);font-weight:700}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.quick-card{display:flex;align-items:center;gap:13px;cursor:pointer}
+.quick-icon{width:46px;height:46px;border-radius:13px;background:#eeeaff;display:grid;place-items:center;font-size:22px}
+.quick-card h4{font-size:14px;margin-bottom:5px}
+.quick-card p{font-size:12px;color:var(--muted)}
+.task-list{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.task-card{display:flex;gap:15px;align-items:flex-start}
+.task-icon{width:48px;height:48px;border-radius:13px;background:#f1efff;display:grid;place-items:center;font-size:23px;flex-shrink:0}
+.task-info{flex:1}
+.task-info h4{font-size:15px;margin:2px 0 6px}
+.task-info p{font-size:12px;color:var(--muted);line-height:1.5}
+.reward{font-weight:800;color:var(--green);font-size:14px;margin:9px 0}
+.primary-btn,.secondary-btn,.danger-btn{
+  border:0;border-radius:9px;padding:10px 15px;font-weight:700;font-size:13px;
+}
+.primary-btn{background:var(--primary);color:white}
+.primary-btn:hover{background:#5143d0}
+.secondary-btn{background:#eeeaff;color:var(--primary)}
+.danger-btn{background:#fff0f0;color:#d34b4b}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:17px}
+.filter-btn{border:1px solid var(--border);background:var(--card);color:var(--muted);padding:9px 15px;border-radius:20px}
+.filter-btn.active{background:var(--primary);color:white;border-color:var(--primary)}
+.form-card{max-width:650px}
+.form-group{margin:16px 0}
+.form-group label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}
+.form-group input,.form-group select{
+  width:100%;padding:13px;border:1px solid var(--border);border-radius:10px;
+  background:var(--bg);color:var(--text);outline:none;
+}
+.form-group input:focus{border-color:var(--primary)}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.wallet-balance{background:linear-gradient(120deg,#5548ce,#8979f1);color:white;border-radius:18px;padding:27px;margin-bottom:18px}
+.wallet-balance p{opacity:.8;font-size:13px}
+.wallet-balance h1{font-size:35px;margin:12px 0}
+.wallet-balance small{opacity:.8}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:500px}
+th,td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--border);font-size:13px}
+th{color:var(--muted);font-weight:700}
+.status{padding:5px 9px;border-radius:20px;background:#fff4d9;color:#9b741c;font-size:11px}
+.status.success{background:#e1f8ef;color:#16865e}
+.status.failed{background:#ffe8e8;color:#c64c4c}
+.ref-box{display:flex;gap:9px;margin:15px 0}
+.ref-box input{flex:1;min-width:0;padding:12px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text)}
+.notice{padding:13px 15px;background:#fff8e7;color:#80651c;border-radius:10px;font-size:12px;line-height:1.6;margin:15px 0}
+body.dark .notice{background:#393322;color:#f3d98b}
+.empty{text-align:center;padding:35px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px}
+.mobile-nav{display:none}
+.toast{
+  position:fixed;bottom:25px;right:25px;background:#20283a;color:white;
+  padding:13px 18px;border-radius:10px;opacity:0;transform:translateY(10px);
+  transition:.25s;z-index:99;pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:1000px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .quick-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .sidebar{display:none}
+  .main{margin:0;width:100%;padding:20px 15px 90px}
+  .topbar{margin-bottom:20px}
+  .topbar h2{font-size:20px}
+  .welcome{padding:23px}
+  .welcome h1{font-size:22px}
+  .welcome-icon{display:none}
+  .stats{gap:10px}
+  .card{padding:16px}
+  .stat-number{font-size:21px}
+  .quick-grid,.task-list{grid-template-columns:1fr}
+  .mobile-nav{
+    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:20;
+    background:var(--card);border-top:1px solid var(--border);
+    justify-content:space-around;padding:9px 3px calc(9px + env(safe-area-inset-bottom));
+  }
+  .mobile-nav button{border:0;background:none;color:var(--muted);font-size:10px;display:grid;gap:4px;justify-items:center}
+  .mobile-nav button span{font-size:19px}
+  .mobile-nav button.active{color:var(--primary)}
+  .ref-box{flex-direction:column}
+}
 </style>
 </head>
 <body>
-<nav>
-  <a class="logo" href="#home">EARNVERSE</a>
-  <div class="links">
-    <a class="l" href="#home">Home</a><a class="l" href="#dash">Dashboard</a><a class="l" href="#tasks">Tasks</a>
-    <a class="l" href="#blogs">Blogs</a><a class="l" href="#invite">Invite</a><a class="l" href="#wallet">Wallet</a><a class="l" href="#admin" id="adm" style="display:none">Admin</a>
-  </div>
-  <span class="chip" id="bal">$0.00</span>
-  <a class="btn" id="au" href="#auth">Login</a>
+<div class="app">
+
+<aside class="sidebar">
+  <div class="logo">Earn<span>Verse</span></div>
+  <div class="nav-label">Main menu</div>
+  <button class="nav-btn active" data-page="dashboard"><span class="ico">⌂</span> Dashboard</button>
+  <button class="nav-btn" data-page="tasks"><span class="ico">✓</span> Earn Tasks</button>
+  <button class="nav-btn" data-page="blogs"><span class="ico">▤</span> Read & Earn</button>
+  <div class="nav-label">Your account</div>
+  <button class="nav-btn" data-page="wallet"><span class="ico">▣</span> My Wallet</button>
+  <button class="nav-btn" data-page="referrals"><span class="ico">♧</span> Referrals</button>
+  <button class="nav-btn" data-page="profile"><span class="ico">◉</span> Profile</button>
+  <div class="nav-label">More</div>
+  <button class="nav-btn" data-page="help"><span class="ico">?</span> Help & Support</button>
+</aside>
+
+<main class="main">
+  <header class="topbar">
+    <h2 id="pageTitle">Dashboard</h2>
+    <div class="top-actions">
+      <button class="icon-btn" id="themeBtn" title="Toggle theme">☾</button>
+      <div class="avatar" id="avatar">U</div>
+    </div>
+  </header>
+
+  <!-- DASHBOARD -->
+  <section class="page active" id="dashboard">
+    <div class="welcome">
+      <div>
+        <h1>Welcome to EarnVerse! 👋</h1>
+        <p>Complete available tasks, read articles and explore earning opportunities.</p>
+      </div>
+      <div class="welcome-icon">🚀</div>
+    </div>
+
+    <div class="stats">
+      <div class="card">
+        <div class="stat-top">Available Balance <span class="stat-icon">💵</span></div>
+        <div class="stat-number" id="dashBalance">$0.00</div>
+        <div class="stat-note">Demo balance</div>
+      </div>
+      <div class="card">
+        <div class="stat-top">Total Earned <span class="stat-icon">📈</span></div>
+        <div class="stat-number" id="dashEarned">$0.00</div>
+        <div class="stat-note">From completed demo tasks</div>
+      </div>
+      <div class="card">
+        <div class="stat-top">Completed Tasks <span class="stat-icon">🎯</span></div>
+        <div class="stat-number" id="dashTasks">0</div>
+        <div class="stat-note">Tasks completed in this demo</div>
+      </div>
+      <div class="card">
+        <div class="stat-top">Referral Count <span class="stat-icon">👥</span></div>
+        <div class="stat-number" id="dashRefs">0</div>
+        <div class="stat-note">Demo referral count</div>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <h3>Quick Actions</h3>
+    </div>
+    <div class="quick-grid">
+      <div class="card quick-card" data-go="tasks">
+        <div class="quick-icon">🎯</div><div><h4>Explore Tasks</h4><p>Find available opportunities</p></div>
+      </div>
+      <div class="card quick-card" data-go="wallet">
+        <div class="quick-icon">💳</div><div><h4>My Wallet</h4><p>View your demo balance</p></div>
+      </div>
+      <div class="card quick-card" data-go="referrals">
+        <div class="quick-icon">🤝</div><div><h4>Invite Friends</h4><p>Learn about referrals</p></div>
+      </div>
+    </div>
+
+    <div class="section-head"><h3>Latest Opportunities</h3><button class="text-btn" data-go="tasks">View all</button></div>
+    <div class="task-list" id="latestTasks"></div>
+  </section>
+
+  <!-- TASKS -->
+  <section class="page" id="tasks">
+    <div class="section-head"><h3>Available Tasks</h3><span class="muted small">Demo opportunities</span></div>
+    <div class="filters" id="taskFilters">
+      <button class="filter-btn active" data-filter="all">All Tasks</button>
+      <button class="filter-btn" data-filter="social">Social Media</button>
+      <button class="filter-btn" data-filter="blog">Reading</button>
+      <button class="filter-btn" data-filter="other">Other</button>
+    </div>
+    <div class="task-list" id="allTasks"></div>
+    <div class="notice">Demo notice: Completing a task here only demonstrates the interface. It does not verify a social follow, video view, subscription or advertiser action, and no real money is credited.</div>
+  </section>
+
+  <!-- BLOGS -->
+  <section class="page" id="blogs">
+    <div class="section-head"><h3>Read & Learn</h3><span class="muted small">Articles and guides</span></div>
+    <div class="task-list" id="blogList"></div>
+    <div class="notice">Reading rewards are currently illustrative only. Real blog rewards require a funded advertiser arrangement and server-side verification.</div>
+  </section>
+
+  <!-- WALLET -->
+  <section class="page" id="wallet">
+    <div class="wallet-balance">
+      <p>Available Demo Balance</p>
+      <h1 id="walletBalance">$0.00</h1>
+      <small>Approximate PKR: <span id="walletPKR">Rs 0</span> · Example rate: Rs 280 / USD</small>
+    </div>
+    <div class="card form-card">
+      <h3>Withdrawal Request</h3>
+      <p class="muted small" style="margin-top:7px">Demo form only — no payment will be sent.</p>
+      <div class="form-group">
+        <label>Payment Method</label>
+        <select id="paymentMethod">
+          <option value="Easypaisa">Easypaisa</option>
+          <option value="JazzCash">JazzCash</option>
+          <option value="Bank Transfer">Bank Transfer</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Account Title</label>
+        <input id="accountTitle" placeholder="Enter account holder name">
+      </div>
+      <div class="form-group">
+        <label>Account Number / IBAN</label>
+        <input id="accountNumber" placeholder="Enter payment account details">
+      </div>
+      <div class="form-group">
+        <label>Amount (USD)</label>
+        <input id="withdrawAmount" type="number" min="1" step=".01" placeholder="Minimum demo amount: $1">
+      </div>
+      <button class="primary-btn" id="withdrawBtn">Submit Demo Request</button>
+    </div>
+    <div class="section-head"><h3>Withdrawal History</h3></div>
+    <div class="card table-wrap">
+      <table><thead><tr><th>Method</th><th>Amount</th><th>Status</th></tr></thead>
+      <tbody id="withdrawHistory"><tr><td colspan="3" class="muted">No requests yet.</td></tr></tbody></table>
+    </div>
+  </section>
+
+  <!-- REFERRALS -->
+  <section class="page" id="referrals">
+    <div class="welcome">
+      <div><h1>Invite Friends 🤝</h1><p>Share your referral link with friends.</p></div>
+      <div class="welcome-icon">🎁</div>
+    </div>
+    <div class="card">
+      <h3>Your Demo Referral Link</h3>
+      <p class="muted small" style="margin-top:7px">This is a sample link. Referral tracking is not connected yet.</p>
+      <div class="ref-box">
+        <input id="refLink" readonly>
+        <button class="primary-btn" id="copyRef">Copy Link</button>
+      </div>
+      <div class="stats" style="margin-top:20px;margin-bottom:0">
+        <div><p class="muted small">Invited Friends</p><h2 id="refCount">0</h2></div>
+        <div><p class="muted small">Referral Earnings</p><h2>$0.00</h2></div>
+      </div>
+    </div>
+    <div class="notice">A real referral program should reward only genuine eligible activity, use server-side tracking, and never require users to pay to join.</div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="page" id="profile">
+    <div class="card form-card">
+      <h3>My Profile</h3>
+      <div class="form-group"><label>Full Name</label><input id="fullName" placeholder="Your name"></div>
+      <div class="form-group"><label>Email Address</label><input id="email" type="email" placeholder="Your email"></div>
+      <div class="form-group"><label>Country</label><select id="country"><option>Pakistan</option><option>Other</option></select></div>
+      <button class="primary-btn" id="saveProfile">Save Demo Profile</button>
+      <p class="muted small" style="margin-top:14px">This demo saves profile details in this browser only. Do not enter sensitive financial information.</p>
+    </div>
+  </section>
+
+  <!-- HELP -->
+  <section class="page" id="help">
+    <div class="card">
+      <h3>Help & Support</h3>
+      <p class="muted" style="margin:12px 0;line-height:1.7">Welcome to EarnVerse. This is the initial interface demo. Account registration, real task verification, payment processing and support tickets are not connected yet.</p>
+      <h4 style="margin:18px 0 7px">Frequently Asked Questions</h4>
+      <p class="muted small">How do I earn? Explore the tasks page. Real tasks will be added after backend setup.</p>
+      <p class="muted small" style="margin-top:10px">How do withdrawals work? Payment methods will be enabled after secure payment and admin systems are configured.</p>
+      <p class="muted small" style="margin-top:10px">Is this a real earning account? No. This version is a frontend demo only.</p>
+    </div>
+  </section>
+
+  <footer>© 2026 EarnVerse · Earn More, Grow More</footer>
+</main>
+</div>
+
+<nav class="mobile-nav">
+  <button class="active" data-page="dashboard"><span>⌂</span>Home</button>
+  <button data-page="tasks"><span>✓</span>Tasks</button>
+  <button data-page="wallet"><span>▣</span>Wallet</button>
+  <button data-page="referrals"><span>♧</span>Refer</button>
+  <button data-page="profile"><span>◉</span>Profile</button>
 </nav>
-<main class="wrap" id="app"></main>
-<div id="toast"></div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-/* ===== SETTINGS: apni values yahan badlein ===== */
-const RATE=280;        // 1 USD = kitne PKR
-const MIN=5;           // minimum withdraw (USD)
-const REF_BONUS=0.5;   // har friend ka bonus (USD)
-const REF_MIN_TASKS=3; // friend itne tasks kare tab hi bonus milta hai
-const ADMIN_EMAIL='admin@earnverse.com'; // is email se signup karne par admin panel khulta hai (real site mein ye server rules se hona chahiye)
-const PL={
-  youtube:{n:'YouTube',c:'#ff1744',i:'YT'},
-  instagram:{n:'Instagram',c:'#d62976',i:'IG'},
-  tiktok:{n:'TikTok',c:'#00b8d4',i:'TT'},
-  facebook:{n:'Facebook',c:'#1877f2',i:'FB'},
-  blog:{n:'Blog',c:'#8b5cf6',i:'BL'}
-};
-/* Tasks: u = apni video / profile ka link lagayen, s = kitne second rukna hai, r = reward USD */
-const TASKS=[
- {id:'y1',p:'youtube',t:'Watch: Tech Review 2026',r:.05,s:30,u:'https://www.youtube.com/'},
- {id:'y2',p:'youtube',t:'Watch & subscribe to our channel',r:.08,s:45,u:'https://www.youtube.com/'},
- {id:'i1',p:'instagram',t:'Follow our Instagram page',r:.04,s:15,u:'https://www.instagram.com/'},
- {id:'i2',p:'instagram',t:'Watch our latest Reel',r:.03,s:20,u:'https://www.instagram.com/'},
- {id:'t1',p:'tiktok',t:'Watch TikTok video',r:.03,s:20,u:'https://www.tiktok.com/'},
- {id:'t2',p:'tiktok',t:'Follow our TikTok account',r:.04,s:15,u:'https://www.tiktok.com/'},
- {id:'f1',p:'facebook',t:'Watch Facebook video',r:.03,s:25,u:'https://www.facebook.com/'},
- {id:'f2',p:'facebook',t:'Like & follow our Facebook page',r:.04,s:15,u:'https://www.facebook.com/'}
-];
-const BLOGS=[
- {id:'b1',t:'5 Smart Ways to Save Money Every Month',r:.03,s:20,x:'Track every expense for one week. Cut subscriptions you do not use. Set aside savings first, then spend what remains. Small habits repeated daily grow into real savings within a year.'},
- {id:'b2',t:'How Freelancers Get Their First Client',r:.04,s:25,x:'Pick one skill and one platform. Build three sample projects, write a clear offer, and message ten buyers a day. Consistency matters more than perfection when you are starting out.'},
- {id:'b3',t:'Beginner Guide to Staying Safe Online',r:.03,s:20,x:'Use a different password for every account and turn on two-step login. Never share OTP codes. Check the web address before you type any payment details.'}
+const tasks = [
+  {id:1,title:"Watch a YouTube video",desc:"Example video-view opportunity.",icon:"▶️",reward:0.05,category:"social"},
+  {id:2,title:"Instagram engagement",desc:"Example Instagram campaign.",icon:"📸",reward:0.08,category:"social"},
+  {id:3,title:"TikTok campaign",desc:"Example short-video campaign.",icon:"🎵",reward:0.06,category:"social"},
+  {id:4,title:"Facebook campaign",desc:"Example social media campaign.",icon:"📘",reward:0.05,category:"social"},
+  {id:5,title:"Read a technology article",desc:"Explore a sample reading opportunity.",icon:"📖",reward:0.04,category:"blog"},
+  {id:6,title:"Explore an online guide",desc:"Example educational content task.",icon:"💡",reward:0.07,category:"other"}
 ];
 
-/* ===== STATE ===== */
-const K='earnverse_v1',$=s=>document.querySelector(s);
-let S;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
-S=S||{user:null,bal:0,total:0,done:{},refs:0,hist:[],wd:[]};
-S.queue=S.queue||[];S.custom=S.custom||[];S.streak=S.streak||0;
-['y2','i1','t2','f2'].forEach(id=>TASKS.find(t=>t.id===id).rv=1); // follow/subscribe tasks manual review se pay hotay hain
-S.custom.forEach(t=>TASKS.push(t));
-const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
-const usd=n=>'$'+n.toFixed(2);
-const today=()=>new Date().toDateString();
-const done=id=>S.done[id]===today();
-const lbl=id=>S.queue.some(q=>q.id===id&&q.d===today()&&q.s==='Pending')?'In review':'Done';
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2400)}
-function hdr(){$('#bal').textContent=usd(S.bal);$('#au').textContent=S.user?'Logout':'Login';$('#adm').style.display=S.user&&S.user.admin?'':'none'}
-function pay(id,a,l){if(done(id))return;S.bal+=a;S.total+=a;S.done[id]=today();S.hist.push({d:today(),a,l});save();hdr();toast('+'+usd(a)+' added to your wallet')}
+const articles = [
+  {title:"How to Start Learning Web Development",desc:"A beginner-friendly introduction to websites, HTML, CSS and JavaScript.",time:"5 min read",icon:"💻"},
+  {title:"Understanding Digital Marketing",desc:"Learn the basics of reaching audiences online.",time:"4 min read",icon:"📱"},
+  {title:"Smart Online Safety Tips",desc:"Simple ways to protect your accounts and personal information.",time:"3 min read",icon:"🔐"}
+];
 
-/* ===== COMPONENTS ===== */
-const tcard=t=>`<div class="card row"><div class="pb" style="background:${PL[t.p].c};color:${PL[t.p].c}"><span style="color:#fff">${PL[t.p].i}</span></div>
-<div style="flex:1"><b>${t.t}</b><div class="mu sm">${PL[t.p].n}, ${t.s} sec, <span style="color:var(--ok)">${usd(t.r)}</span></div></div>
-<button class="btn" data-t="${t.id}" ${done(t.id)?'disabled':''}>${done(t.id)?lbl(t.id):'Start'}</button></div>`;
-const bcard=b=>`<div class="card row"><div class="pb" style="background:${PL.blog.c};color:${PL.blog.c}"><span style="color:#fff">BL</span></div>
-<div style="flex:1"><b>${b.t}</b><div class="mu sm">${b.s} sec read, <span style="color:var(--ok)">${usd(b.r)}</span></div></div>
-<button class="btn" data-b="${b.id}" ${done(b.id)?'disabled':''}>${done(b.id)?'Done':'Read'}</button></div>`;
-const stat=(l,v)=>`<div class="card"><div class="mu sm">${l}</div><div class="big">${v}</div></div>`;
-
-/* ===== PAGES (sab pages ek hi file mein) ===== */
-const P={
-home:()=>`
-<section class="hero"><div>
-<h1>Watch, follow and read. Get paid in dollars.</h1>
-<p class="mu" style="max-width:520px;margin:18px 0 26px;line-height:1.7">Complete short tasks on YouTube, Instagram, TikTok and Facebook, read blogs, invite friends, and withdraw to Easypaisa, JazzCash or your bank account.</p>
-<a class="btn" href="#${S.user?'tasks':'auth'}">Start earning</a> <a class="btn g" href="#wallet">See payout methods</a></div>
-<div class="orb"><div class="mu sm">Your wallet</div><div class="n" id="live">$0.00</div>
-<div class="feed"><div><span>YouTube video watched</span><b style="color:var(--ok)">+$0.05</b></div><div><span>Instagram follow</span><b style="color:var(--ok)">+$0.04</b></div><div><span>Friend joined</span><b style="color:var(--ok)">+${usd(REF_BONUS)}</b></div></div></div></section>
-<h2>Four ways to earn</h2>
-<div class="grid">${Object.keys(PL).filter(k=>k!=='blog').map(k=>`<div class="card row"><div class="pb" style="background:${PL[k].c};color:${PL[k].c}"><span style="color:#fff">${PL[k].i}</span></div><div><b>${PL[k].n}</b><div class="mu sm">Daily tasks</div></div></div>`).join('')}
-<div class="card row"><div class="pb" style="background:${PL.blog.c};color:${PL.blog.c}"><span style="color:#fff">BL</span></div><div><b>Blogs</b><div class="mu sm">Read and claim</div></div></div>
-<div class="card row"><div class="pb" style="background:#00c853;color:#00c853"><span style="color:#fff">+1</span></div><div><b>Invite friends</b><div class="mu sm">${usd(REF_BONUS)} per friend</div></div></div></div>
-<h2>How it works</h2>
-<div class="grid"><div class="card"><b>1. Create your account</b><p class="mu sm" style="margin-top:6px">Sign up free in 20 seconds.</p></div>
-<div class="card"><b>2. Finish tasks</b><p class="mu sm" style="margin-top:6px">Open the link, wait for the timer, claim your reward.</p></div>
-<div class="card"><b>3. Withdraw</b><p class="mu sm" style="margin-top:6px">Request a payout from ${usd(MIN)}. Easypaisa, JazzCash or bank.</p></div></div>
-<h2>Questions</h2>
-<details><summary>How do I get paid?</summary><p>Request a withdrawal from ${usd(MIN)}. Payouts go to Easypaisa, JazzCash or your bank account after review.</p></details>
-<details><summary>Why are some tasks reviewed?</summary><p>Follow and subscribe tasks are checked by our team before the reward is added. This keeps rewards fair for everyone.</p></details>
-<details><summary>Can I have more than one account?</summary><p>No. One person, one account. Duplicate accounts are banned and their balance is removed.</p></details>
-<details><summary>Where do the rewards come from?</summary><p>Rewards are funded by advertisers and partners who pay for views and follows. Edit this answer to match your real income source.</p></details>
-<footer>EarnVerse. Rewards depend on available tasks and are subject to review.<br><a href="#legal">Terms</a><a href="#legal">Privacy</a><a href="#legal">Withdrawal policy</a><a href="#legal">Support</a></footer>`,
-
-auth:()=>{const r=new URLSearchParams(location.search).get('ref')||'';return `
-<div class="card" style="max-width:440px;margin:30px auto"><h2 style="margin-top:0">Create your account</h2>
-<form onsubmit="return reg(event)"><label>Full name</label><input name="n" required maxlength="40" autocomplete="name">
-<label>Email</label><input name="e" type="email" required autocomplete="email">
-<label>Referral code (optional)</label><input name="r" value="${esc(r)}" maxlength="12">
-<button class="btn" style="width:100%">Continue</button></form></div>`},
-
-dash:()=>{const d7=[...Array(7)].map((_,i)=>{const dt=new Date(Date.now()-(6-i)*864e5).toDateString();return S.hist.filter(x=>x.d===dt).reduce((a,x)=>a+x.a,0)});
-const mx=Math.max(...d7,.01),td=TASKS.filter(t=>done(t.id)).length+BLOGS.filter(b=>done(b.id)).length,lv=Math.floor(S.total/2)+1,pr=(S.total%2)/2*100;
-return `<h2 style="margin-top:0">Welcome, ${esc(S.user.name)}</h2>
-<div class="grid">${stat('Balance',usd(S.bal))}${stat('Total earned',usd(S.total))}${stat('Tasks done today',td)}${stat('Friends invited',S.refs)}</div>
-<div class="card" style="margin-top:16px"><div class="row" style="justify-content:space-between"><b>Level ${lv}</b><span class="mu sm">Earn ${usd(2-(S.total%2))} more for the next level</span></div><div class="bar" style="margin-top:12px"><i style="width:${pr}%"></i></div></div>
-<div class="card" style="margin-top:16px"><b>Earnings, last 7 days</b><div style="display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:16px">
-${d7.map(v=>`<div title="${usd(v)}" style="flex:1;height:${Math.max(v/mx*100,4)}%;background:linear-gradient(var(--c1),var(--c2));border-radius:8px 8px 0 0;box-shadow:0 0 14px rgba(0,229,255,.3)"></div>`).join('')}</div></div>
-<div class="card row" style="margin-top:16px;justify-content:space-between"><div><b>Daily bonus</b><div class="mu sm">Streak: ${S.streak} day${S.streak===1?'':'s'}. Claim every day to grow your bonus.</div></div><button class="btn" onclick="bonus()" ${S.lastBonus===today()?'disabled':''}>${S.lastBonus===today()?'Claimed':'Claim bonus'}</button></div>
-<div style="margin-top:20px"><a class="btn" href="#tasks">Go to tasks</a></div>`},
-
-tasks:()=>`<h2 style="margin-top:0">Daily tasks</h2><p class="mu sm" style="margin-bottom:14px">Tap Start, finish the action in the new tab, wait for the timer, then claim. Follow and subscribe tasks are paid after a quick review.</p>
-<div class="fil">${['all','youtube','instagram','tiktok','facebook'].map(k=>`<button class="${FIL===k?'on':''}" onclick="FIL='${k}';view()">${k==='all'?'All':PL[k].n}</button>`).join('')}</div>
-<div class="grid w">${TASKS.filter(t=>FIL==='all'||t.p===FIL).map(tcard).join('')}</div>`,
-
-blogs:()=>`<h2 style="margin-top:0">Read and earn</h2><div class="grid w">${BLOGS.map(bcard).join('')}</div>`,
-
-invite:()=>{const l=location.href.split('#')[0].split('?')[0]+'?ref='+S.user.code;return `
-<h2 style="margin-top:0">Invite friends</h2>
-<div class="card"><p class="mu">Earn <b style="color:var(--ok)">${usd(REF_BONUS)}</b> every time a friend joins with your link and completes ${REF_MIN_TASKS} tasks.</p>
-<label style="display:block;margin-top:16px">Your link</label><input id="lnk" readonly value="${l}">
-<div class="row"><button class="btn" onclick="cp()">Copy link</button><span class="mu sm">Code: <b>${S.user.code}</b></span></div></div>
-<div class="grid" style="margin-top:16px">${stat('Friends joined',S.refs)}${stat('Referral earnings',usd(S.refs*REF_BONUS))}</div>`},
-
-wallet:()=>`<h2 style="margin-top:0">Wallet</h2>
-<div class="grid">${stat('Balance',usd(S.bal))}${stat('In PKR','Rs '+Math.round(S.bal*RATE).toLocaleString())}</div>
-<div class="card" style="margin-top:16px"><b>Withdraw</b><p class="mu sm" style="margin:6px 0 14px">Minimum ${usd(MIN)}. Rate: $1 = Rs ${RATE}.</p>
-<form onsubmit="return wd(event)"><label>Method</label><select name="m"><option>Easypaisa</option><option>JazzCash</option><option>Bank Account</option></select>
-<label>Account title</label><input name="ttl" required maxlength="40">
-<label>Mobile number (03XXXXXXXXX) or bank account / IBAN</label><input name="num" required maxlength="34">
-<label>Amount (USD)</label><input name="amt" type="number" step="0.01" min="${MIN}" required>
-<button class="btn" style="width:100%">Request withdrawal</button></form></div>
-<div class="card" style="margin-top:16px;overflow-x:auto"><b>Withdrawal history</b>
-${S.wd.length?`<table><tr><th>Date</th><th>Method</th><th>Amount</th><th>Status</th></tr>${S.wd.map(w=>`<tr><td>${w.d}</td><td>${w.m}</td><td>${usd(w.a)}</td><td><span class="tag">${w.s}</span></td></tr>`).join('')}</table>`:'<p class="mu sm" style="margin-top:10px">No withdrawals yet. Reach '+usd(MIN)+' and request your first payout.</p>'}</div>`,
-
-legal:()=>`<h2 style="margin-top:0">Terms, privacy and withdrawals</h2><div class="card" style="line-height:1.7">
-<b>Terms of use</b><p class="mu sm" style="margin:6px 0 18px">You must be 18 or older. One person may hold one account. Bots, fake accounts and VPN tricks used to claim rewards lead to a ban and loss of balance. Tasks and rewards may change.</p>
-<b>Privacy</b><p class="mu sm" style="margin:6px 0 18px">We keep your name, email and activity only to run your account and prevent fraud. We do not sell your data. You can ask us to delete your account at any time.</p>
-<b>Withdrawal policy</b><p class="mu sm" style="margin:6px 0 18px">Minimum ${usd(MIN)}. Requests are reviewed by hand and paid to Easypaisa, JazzCash or bank accounts in your own name. Rejected requests return to your balance.</p>
-<b>Support</b><p class="mu sm" style="margin:6px 0 0">Email support@earnverse.com (replace with your own address).</p></div>`,
-
-admin:()=>{
-const paid=S.wd.filter(w=>w.s==='Paid').reduce((a,w)=>a+w.a,0),pw=S.wd.filter(w=>w.s==='Pending').length,pq=S.queue.filter(q=>q.s==='Pending').length;
-const acts=(k,i)=>`<button class="btn sb" onclick="adm('${k}',${i},1)">${k==='w'?'Pay':'Approve'}</button> <button class="btn g sb" onclick="adm('${k}',${i},0)">Reject</button>`;
-const wr=S.wd.map((w,i)=>`<tr><td>${w.d}</td><td>${w.m}<br><span class="mu sm">${esc(w.t||'')} ${esc(w.n||'')}</span></td><td>${usd(w.a)}</td><td><span class="tag">${w.s}</span></td><td>${w.s==='Pending'?acts('w',i):''}</td></tr>`).join('');
-const qr=S.queue.map((q,i)=>`<tr><td>${q.d}</td><td>${q.t}</td><td>${usd(q.r)}</td><td><span class="tag">${q.s}</span></td><td>${q.s==='Pending'?acts('q',i):''}</td></tr>`).join('');
-return `<h2 style="margin-top:0">Admin panel</h2>
-<div class="grid">${stat('Total paid',usd(paid))}${stat('Pending withdrawals',pw)}${stat('Tasks to review',pq)}${stat('Live tasks',TASKS.length)}</div>
-<div class="card" style="margin-top:16px;overflow-x:auto"><b>Withdrawal requests</b><table><tr><th>Date</th><th>Pay to</th><th>Amount</th><th>Status</th><th></th></tr>${wr||'<tr><td colspan="5" class="mu">No requests yet</td></tr>'}</table></div>
-<div class="card" style="margin-top:16px;overflow-x:auto"><b>Task review queue</b><table><tr><th>Date</th><th>Task</th><th>Reward</th><th>Status</th><th></th></tr>${qr||'<tr><td colspan="5" class="mu">Nothing to review</td></tr>'}</table></div>
-<div class="card" style="margin-top:16px"><b>Add a task</b>
-<form onsubmit="return addT(event)" style="margin-top:12px"><label>Platform</label><select name="p">${Object.keys(PL).filter(k=>k!=='blog').map(k=>`<option value="${k}">${PL[k].n}</option>`).join('')}</select>
-<label>Title</label><input name="tt" required maxlength="60"><label>Link (https://...)</label><input name="u" type="url" required>
-<label>Reward (USD)</label><input name="r" type="number" step="0.01" min="0.01" required><label>Timer (seconds)</label><input name="s" type="number" min="10" value="20" required>
-<label>Verification</label><select name="rv"><option value="0">Timer only</option><option value="1">Manual review</option></select>
-<button class="btn" style="width:100%">Publish task</button></form>
-${S.custom.map(t=>`<div class="row" style="justify-content:space-between;margin-top:12px"><span>${t.t}</span><button class="btn g sb" onclick="delT('${t.id}')">Delete</button></div>`).join('')}</div>`}
+let state = {
+  balance:0,
+  earned:0,
+  completed:[],
+  withdrawals:[],
+  referrals:0
 };
-const AFTER={home(){let v=0;const el=$('#live');const iv=setInterval(()=>{if(!$('#live'))return clearInterval(iv);v+=.37;if(v>12.48)v=0;el.textContent=usd(v)},90)}};
 
-/* ===== ACTIONS ===== */
-function reg(ev){ev.preventDefault();const f=ev.target;
- S.user={name:f.n.value.trim(),email:f.e.value.trim(),admin:f.e.value.trim().toLowerCase()===ADMIN_EMAIL,code:'EV'+Math.random().toString(36).slice(2,8).toUpperCase()};
- save();hdr();toast('Account ready');location.hash='#dash';view();return false}
-function cp(){const i=$('#lnk');i.select();try{navigator.clipboard.writeText(i.value)}catch(e){document.execCommand('copy')}toast('Link copied')}
-function wd(ev){ev.preventDefault();const f=ev.target,a=parseFloat(f.amt.value),m=f.m.value,n=f.num.value.trim();
- if(!(a>=MIN))return toast('Minimum withdrawal is '+usd(MIN)),false;
- if(a>S.bal)return toast('Amount is more than your balance'),false;
- if(m!=='Bank Account'&&!/^03\d{9}$/.test(n))return toast('Enter a valid number like 03XXXXXXXXX'),false;
- if(m==='Bank Account'&&n.length<10)return toast('Enter a valid account number or IBAN'),false;
- S.bal-=a;S.wd.unshift({d:new Date().toLocaleDateString(),m,n,t:f.ttl.value.trim(),a,s:'Pending'});save();hdr();toast('Withdrawal request sent');view();return false}
-const run={},VIS={};let LASTC=0,FIL='all';
-function startTask(id){const t=TASKS.find(x=>x.id===id);if(done(id))return;
- if(run[id]&&Date.now()>=run[id]){
-  if(!VIS[id])return toast('Finish the task in the new tab first, then come back');
-  if(Date.now()-LASTC<4000)return toast('Slow down a little');
-  LASTC=Date.now();delete run[id];
-  if(t.rv){S.done[id]=today();S.queue.push({id,t:t.t,r:t.r,d:today(),s:'Pending'});save();toast('Sent for review. Reward is added once approved')}
-  else pay(id,t.r,PL[t.p].n+' task');
-  return view()}
- if(run[id])return;window.open(t.u,'_blank','noopener');delete VIS[id];run[id]=Date.now()+t.s*1000;tick()}
-function tick(){document.querySelectorAll('[data-t]').forEach(b=>{const id=b.dataset.t,t=TASKS.find(x=>x.id===id);
- if(done(id)){b.textContent=lbl(id);b.disabled=true}else if(run[id]){const l=Math.ceil((run[id]-Date.now())/1000);b.textContent=l>0?l+'s':'Claim '+usd(t.r)}})}
-setInterval(tick,500);
-document.addEventListener('visibilitychange',()=>{if(document.hidden)Object.keys(run).forEach(k=>VIS[k]=1)});
-function readBlog(id){const b=BLOGS.find(x=>x.id===id);if(done(id))return;const m=document.createElement('div');m.className='modal';
- m.innerHTML=`<div class="card"><h2 style="margin-top:0">${b.t}</h2><p class="mu" style="line-height:1.75">${b.x}</p><div class="bar" style="margin:20px 0"><i id="bp"></i></div>
- <div class="row"><button class="btn" id="bc" disabled>Reading</button><button class="btn g" id="bx">Close</button></div></div>`;
- document.body.append(m);const end=Date.now()+b.s*1000;
- const iv=setInterval(()=>{const l=end-Date.now();$('#bp').style.width=Math.min(100,(1-l/(b.s*1000))*100)+'%';
-  if(l<=0){clearInterval(iv);const c=$('#bc');c.disabled=false;c.textContent='Claim '+usd(b.r);c.onclick=()=>{pay(id,b.r,'Blog read');m.remove();view()}}},200);
- $('#bx').onclick=()=>{clearInterval(iv);m.remove()}}
-document.addEventListener('click',ev=>{const a=ev.target.closest('[data-t]'),b=ev.target.closest('[data-b]');if(a)startTask(a.dataset.t);if(b)readBlog(b.dataset.b)});
-$('#au').onclick=ev=>{if(S.user){ev.preventDefault();S.user=null;save();hdr();location.hash='#home';view()}};
+const $ = id => document.getElementById(id);
+const money = value => "$" + Number(value).toFixed(2);
 
-function bonus(){if(S.lastBonus===today())return;S.streak=S.lastBonus===new Date(Date.now()-864e5).toDateString()?S.streak+1:1;S.lastBonus=today();
- const a=.01*Math.min(S.streak,7);S.bal+=a;S.total+=a;S.hist.push({d:today(),a,l:'Daily bonus'});save();hdr();toast('+'+usd(a)+' daily bonus');view()}
-function adm(k,i,ok){if(k==='w'){const w=S.wd[i];w.s=ok?'Paid':'Rejected';if(!ok)S.bal+=w.a}
- else{const q=S.queue[i];q.s=ok?'Approved':'Rejected';if(ok){S.bal+=q.r;S.total+=q.r;S.hist.push({d:q.d,a:q.r,l:'Reviewed task'})}else S.done[q.id]=''}
- save();hdr();view()}
-function addT(ev){ev.preventDefault();const f=ev.target,u=f.u.value.trim();if(!/^https:\/\//.test(u))return toast('Link must start with https://'),false;
- const t={id:'c'+Date.now(),p:f.p.value,t:esc(f.tt.value.trim()),r:parseFloat(f.r.value),s:parseInt(f.s.value,10),u,rv:+f.rv.value};
- S.custom.push(t);TASKS.push(t);save();toast('Task published');view();return false}
-function delT(id){S.custom=S.custom.filter(t=>t.id!==id);const i=TASKS.findIndex(t=>t.id===id);if(i>-1)TASKS.splice(i,1);save();view()}
+function toast(message){
+  const el=$("toast");
+  el.textContent=message;
+  el.classList.add("show");
+  setTimeout(()=>el.classList.remove("show"),2500);
+}
 
-/* ===== ROUTER ===== */
-function view(){let h=(location.hash||'#home').slice(1);if(!P[h])h='home';
- if(!S.user&&['dash','tasks','blogs','invite','wallet','admin'].includes(h))h='auth';
- if(h==='admin'&&!(S.user&&S.user.admin))h='home';
- document.querySelectorAll('a.l').forEach(a=>a.classList.toggle('on',a.hash==='#'+h));
- $('#app').innerHTML=P[h]();window.scrollTo(0,0);if(AFTER[h])AFTER[h]();tick()}
-addEventListener('hashchange',view);hdr();view();
+function showPage(page){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  const target=$(page);
+  if(!target)return;
+  target.classList.add("active");
+  document.querySelectorAll("[data-page]").forEach(b=>{
+    b.classList.toggle("active",b.dataset.page===page);
+  });
+  const names={dashboard:"Dashboard",tasks:"Earn Tasks",blogs:"Read & Earn",wallet:"My Wallet",referrals:"Referrals",profile:"Profile",help:"Help & Support"};
+  $("pageTitle").textContent=names[page]||"EarnVerse";
+  window.location.hash=page;
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.querySelectorAll("[data-page]").forEach(btn=>{
+  btn.addEventListener("click",()=>showPage(btn.dataset.page));
+});
+document.querySelectorAll("[data-go]").forEach(btn=>{
+  btn.addEventListener("click",()=>showPage(btn.dataset.go));
+});
+
+function taskHTML(task){
+  const done=state.completed.includes(task.id);
+  return `<div class="card task-card">
+    <div class="task-icon">${task.icon}</div>
+    <div class="task-info">
+      <h4>${task.title}</h4>
+      <p>${task.desc}</p>
+      <div class="reward">Demo reward: ${money(task.reward)}</div>
+      <button class="${done?'secondary-btn':'primary-btn'}" ${done?'disabled':''} onclick="completeTask(${task.id})">
+        ${done?'Completed':'Try Demo Task'}
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderTasks(filter="all"){
+  const list=tasks.filter(t=>filter==="all"||t.category===filter);
+  $("allTasks").innerHTML=list.map(taskHTML).join("");
+  $("latestTasks").innerHTML=tasks.slice(0,3).map(taskHTML).join("");
+}
+
+function completeTask(id){
+  const task=tasks.find(t=>t.id===id);
+  if(!task||state.completed.includes(id))return;
+  state.completed.push(id);
+  state.balance+=task.reward;
+  state.earned+=task.reward;
+  saveState();
+  renderAll();
+  toast("Demo task completed. Demo balance updated.");
+}
+
+function renderBlogs(){
+  $("blogList").innerHTML=articles.map((a,i)=>`
+    <div class="card task-card">
+      <div class="task-icon">${a.icon}</div>
+      <div class="task-info">
+        <h4>${a.title}</h4>
+        <p>${a.desc}</p>
+        <div class="reward">${a.time}</div>
+        <button class="secondary-btn" onclick="readArticle(${i})">Read Article</button>
+      </div>
+    </div>`).join("");
+}
+
+function readArticle(i){
+  const a=articles[i];
+  alert(a.title+"\n\n"+a.desc+"\n\nThis is a sample article preview. Full blog content and real reading verification have not been connected.");
+}
+
+function renderWallet(){
+  $("walletBalance").textContent=money(state.balance);
+  $("dashBalance").textContent=money(state.balance);
+  $("dashEarned").textContent=money(state.earned);
+  $("dashTasks").textContent=state.completed.length;
+  $("dashRefs").textContent=state.referrals;
+  $("refCount").textContent=state.referrals;
+  $("walletPKR").textContent="Rs "+Math.round(state.balance*280).toLocaleString("en-PK");
+  $("withdrawHistory").innerHTML=state.withdrawals.length
+    ?state.withdrawals.map(w=>`<tr><td>${escapeHTML(w.method)}</td><td>${money(w.amount)}</td><td><span class="status">${w.status}</span></td></tr>`).join("")
+    :'<tr><td colspan="3" class="muted">No requests yet.</td></tr>';
+}
+
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+$("withdrawBtn").addEventListener("click",()=>{
+  const amount=Number($("withdrawAmount").value);
+  const title=$("accountTitle").value.trim();
+  const account=$("accountNumber").value.trim();
+  if(!title||!account||!Number.isFinite(amount)||amount<=0){
+    toast("Please complete all fields correctly.");
+    return;
+  }
+  if(amount<1){toast("Minimum demo request is $1.");return;}
+  if(amount>state.balance){toast("Insufficient demo balance.");return;}
+  state.balance-=amount;
+  state.withdrawals.unshift({
+    method:$("paymentMethod").value,
+    amount,
+    status:"Demo only"
+  });
+  saveState();
+  renderAll();
+  $("withdrawAmount").value="";
+  $("accountTitle").value="";
+  $("accountNumber").value="";
+  toast("Demo request recorded. No payment was sent.");
+});
+
+$("copyRef").addEventListener("click",async()=>{
+  const input=$("refLink");
+  try{
+    await navigator.clipboard.writeText(input.value);
+    toast("Demo link copied.");
+  }catch(e){
+    input.select();
+    document.execCommand("copy");
+    toast("Demo link copied.");
+  }
+});
+
+$("saveProfile").addEventListener("click",()=>{
+  const profile={
+    name:$("fullName").value.trim(),
+    email:$("email").value.trim(),
+    country:$("country").value
+  };
+  localStorage.setItem("earnverse_profile",JSON.stringify(profile));
+  $("avatar").textContent=(profile.name[0]||"U").toUpperCase();
+  toast("Demo profile saved.");
+});
+
+$("taskFilters").addEventListener("click",e=>{
+  const btn=e.target.closest("[data-filter]");
+  if(!btn)return;
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  renderTasks(btn.dataset.filter);
+});
+
+$("themeBtn").addEventListener("click",()=>{
+  document.body.classList.toggle("dark");
+  localStorage.setItem("earnverse_theme",document.body.classList.contains("dark")?"dark":"light");
+  $("themeBtn").textContent=document.body.classList.contains("dark")?"☀":"☾";
+});
+
+function saveState(){
+  localStorage.setItem("earnverse_demo",JSON.stringify(state));
+}
+function loadState(){
+  try{
+    const saved=JSON.parse(localStorage.getItem("earnverse_demo"));
+    if(saved)state={...state,...saved};
+  }catch(e){}
+  try{
+    const profile=JSON.parse(localStorage.getItem("earnverse_profile"));
+    if(profile){
+      $("fullName").value=profile.name||"";
+      $("email").value=profile.email||"";
+      $("country").value=profile.country||"Pakistan";
+      $("avatar").textContent=(profile.name?.[0]||"U").toUpperCase();
+    }
+  }catch(e){}
+  if(localStorage.getItem("earnverse_theme")==="dark"){
+    document.body.classList.add("dark");
+    $("themeBtn").textContent="☀";
+  }
+}
+
+function renderAll(){
+  renderTasks();
+  renderBlogs();
+  renderWallet();
+}
+
+$("refLink").value=location.origin+location.pathname+"?ref=DEMO123";
+loadState();
+renderAll();
+
+const initialPage=location.hash.replace("#","");
+if($(initialPage))showPage(initialPage);
 </script>
 </body>
 </html>
+
+
+
+
+
